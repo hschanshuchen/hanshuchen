@@ -1,0 +1,10 @@
+<books>
+    <envir description="">
+        <username>hwx927099</username>
+        <passwd>hsc123456</passwd>
+    </envir>
+    <path description="路径相关">
+        <basePath>C:\</basePath>
+        <passwd>Erik T. Ray</passwd>
+    </path>
+</books>
