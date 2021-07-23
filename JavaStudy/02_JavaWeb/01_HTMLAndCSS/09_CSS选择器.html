@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*id选择器*/
+        #div1{
+            color: green;
+            font-size: 30px;
+            text-align: center;
+            line-height: 100px;
+            border: 1px solid;
+        }
+        /*元素选择器*/
+        div{
+            color: red;
+        }
+        /*类选择器*/
+        .text{
+            color: orange;
+        }
+        /*选择所有元素*/
+        *{
+            color: blue;
+        }
+        /*并集选择*/
+        div,span{
+            color: cadetblue;
+        }
+        /*子选择器*/
+        div span{
+            color: crimson;
+        }
+        /*父选择器*/
+        span>div{
+            color: darkgray;
+        }
+        /*属性选择器*/
+        input[name="username"]{
+            border: 5px solid;
+        }
+        /*状态选择器*/
+        a:link{
+            color: crimson;
+        }
+        a:hover{
+            color: gold;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="div1">
+        黑马程序员
+    </div><br>
+    <div>
+        <span>
+            韩书琛
+        </span>
+    </div><br>
+    <div class="text">
+        哪吒
+    </div>
+    <input name="username">
+    </input>
+    <a href="#">
+        三国演义
+    </a>
+
+</body>
+</html>
