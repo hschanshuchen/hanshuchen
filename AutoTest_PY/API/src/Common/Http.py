@@ -7,7 +7,7 @@ from src.Common import Log
 from src.Common.util import util
 
 
-class configHttp:
+class Http:
     util = util()
 
     def __init__(self):
