@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page>
+    <database name="new111">
+        <table name="table000">
+            <sql id="select_num">
+                select * from rd
+            </sql>
+            <sql id="delete_num">
+                select * from rd
+            </sql>
+        </table>
+    </database>
+</page>
