@@ -27,7 +27,7 @@ class Log:
         ch.setFormatter(formatter)
         self.logger.addHandler(ch)
 
-class MyLog:
+class Logger:
     log = None
     mutex = threading.Lock()
     def __init__(self):
@@ -35,15 +35,15 @@ class MyLog:
 
     @staticmethod
     def get_log():
-        if MyLog.log is None:
-            MyLog.mutex.acquire()
-            MyLog.log = Log()
-            MyLog.mutex.release()
-        return MyLog.log
+        if Logger.log is None:
+            Logger.mutex.acquire()
+            Logger.log = Log()
+            Logger.mutex.release()
+        return Logger.log
 
 
 
 if __name__=='__main__':
 
-    log=MyLog().get_log()
-    log.logger.info("111111111")
+    logger=Logger().get_log().logger
+    logger.info("111111111")

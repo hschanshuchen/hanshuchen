@@ -7,7 +7,7 @@ import os
 class HTML:
     def __init__(self):
         # 定义需要执行哪个包下的文件，我要运行项目的文件夹是：当前目录下的父级目录下的“testcases”目录
-        self.dir_test = os.path.abspath(os.path.join(os.getcwd(), "./..")) + "\\testCase"
+        self.dir_test = os.path.abspath(os.path.join(os.getcwd(), "./..")) + "\\script"
         # 获取当前时间
         self.now = strftime("%Y_%m_%d-%H-%M-%S", localtime(time()))
         # 报告位置
