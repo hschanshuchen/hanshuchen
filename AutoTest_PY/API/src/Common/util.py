@@ -8,7 +8,7 @@ from xlrd import open_workbook
 class util:
 
     def __init__(self):
-        self.configPath = os.path.abspath("../config.ini")
+        self.configPath = os.path.abspath("../../config.ini")
         self.testCaseExcelPath = os.path.abspath("../TestData/file/login.xls")
         self.sqlXmlPath = os.path.abspath("../TestData/file/sql.xml")
         self.conf = configparser.ConfigParser()
@@ -83,7 +83,7 @@ class util:
 
 if __name__ == "__main__":
     u = util()
-    s = u.get_http("basePath")
+    s = u.get_http("timeout")
     s1 = u.get_user("username")
     s2 = u.get_db("port")
     s3 = u.get_email("To")
