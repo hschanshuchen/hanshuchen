@@ -12,3 +12,9 @@ pip3 install -r requirements.txt
 
 
 
+pip卸载包
+
+命令：pip uninstall packagename
+
+
+
