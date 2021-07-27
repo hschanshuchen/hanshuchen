@@ -12,7 +12,7 @@ class HTML:
         # 获取当前时间
         self.now = strftime("%Y_%m_%d-%H-%M-%S", localtime(time()))
         # 报告位置
-        self.filename = os.path.abspath("../result//report//") + self.now + "report.html"
+        self.filename = os.path.abspath("..\\result\\report") +"\\"+ self.now + "report.html"
 
     def htmlTest(self,title,description):
         # 使用unittest.TestLoader().discover方法，运行以case.py结尾的所有py文件
