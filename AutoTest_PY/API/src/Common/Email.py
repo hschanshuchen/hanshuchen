@@ -6,22 +6,23 @@ from datetime import datetime
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
+from Log import Log
+from src.Common.util import util
 
 
 class Email:
-
-    util =util()
+    util = util()
 
     def __init__(self):
         global host, username, password, port, sender, title, content
         host = util.get_email("mail_host")
-        username = locaReadConfig.get_email("mail_username")
-        password = locaReadConfig.get_email("mail_password")
-        port = locaReadConfig.get_email("mail_port")
-        sender = locaReadConfig.get_email("sender")
-        title = locaReadConfig.get_email("subject")
-        content = locaReadConfig.get_email("content")
-        self.value = locaReadConfig.get_email("receiver")
+        username = util.get_email("mail_username")
+        password = util.get_email("mail_password")
+        port = util.get_email("mail_port")
+        sender = util.get_email("sender")
+        title = util.get_email("subject")
+        content = util.get_email("content")
+        self.value = util.get_email("receiver")
         self.receiver = []
         for n in str(self.value).split("/"):
             self.receiver.append(n)
