@@ -33,9 +33,7 @@ class GatAllProduct(unittest.TestCase):
                      "acl": "open",
                      "uid": "6104402102131"
                      }
-        print(11111)
         response = self.product.addProduct(self.hostIp, self.data)
-        print(22222)
         self.assertEqual(200, response.status_code, "验证码是200")
         msg = re.findall(r"alert\('(.+?)'\)", response.text)[0]
         self.assertEqual("保存成功", msg, "返回提示信息保存成功")
