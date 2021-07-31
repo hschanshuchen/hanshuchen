@@ -1,5 +1,7 @@
 import configparser
 import os
+import random
+import string
 from xml.etree import ElementTree as ElementTree
 
 from xlrd import open_workbook
@@ -8,34 +10,8 @@ from xlrd import open_workbook
 class util:
 
     def __init__(self):
-        self.configPath = os.path.abspath("../../config.ini")
         self.testCaseExcelPath = os.path.abspath("../TestData/file/login.xls")
         self.sqlXmlPath = os.path.abspath("../TestData/file/sql.xml")
-        self.conf = configparser.ConfigParser()
-        self.conf.read(self.configPath, encoding='utf-8')
-
-    def get_user(self, key):
-        """
-        读取配置文件用户用户信息
-        :param key:
-        :return:
-        """
-        return self.conf.get("USER", key)
-
-    def get_db(self, key):
-        """
-        读取配置文件数据库信息
-        :param key:
-        :return:
-        """
-        value = self.conf.get("DATABASE", key)
-        return value
-
-    def get_email(self, key):
-        return self.conf.get("EMAIL", key)
-
-    def get_http(self, key):
-        return self.conf.get("HTTP", key)
 
     # 读取xml语句存储在字典中
     def set_xml(self, xmlPath):
@@ -80,16 +56,16 @@ class util:
         cls = self.get_xls(self.testCaseExcelPath, sheet_name, "case_name")
         return cls
 
+    def getRandomStr(self, n):
+        return ''.join(random.sample(string.ascii_letters + string.digits, n))
+
 
 if __name__ == "__main__":
     u = util()
-    s = u.get_http("timeout")
-    s1 = u.get_user("username")
-    s2 = u.get_db("port")
-    s3 = u.get_email("To")
+
 
     ss = u.get_sql("new111", "table000", "select_num")
 
     sss = u.get_caseInfo("login")
 
-    print(s, s1, s2, s3, ss, sss)
+    print( ss, sss)
