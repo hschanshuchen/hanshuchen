@@ -1,8 +1,5 @@
-from bs4 import BeautifulSoup
-
 from Http import Http
 from login.Login import Login
-from util import util
 
 
 class Product:
@@ -31,7 +28,6 @@ class Product:
                                  self.cookies)
         return respons
 
-
 # if __name__ == "__main__":
 #     p = Product()
 #     u = util()
@@ -43,24 +39,24 @@ class Product:
 #     for tag in productTagList:
 #         productIdList.append(tag.get("value"))
 #     print(productIdList)
-    # data = {"name": "productName_" + util().getRandomStr(5),
-    #         "code": "productCode_" + util().getRandomStr(5),
-    #         "line": 0,
-    #         "PO": "admin",
-    #         "QD": "",
-    #         "RD": "",
-    #         "type": "normal",
-    #         "desc": "",
-    #         "acl": "open",
-    #         "uid": "6104402102131"
-    #         }
-    # res = p.addProduct("127.0.0.1", data)
-    # print(res.text)
+# data = {"name": "productName_" + util().getRandomStr(5),
+#         "code": "productCode_" + util().getRandomStr(5),
+#         "line": 0,
+#         "PO": "admin",
+#         "QD": "",
+#         "RD": "",
+#         "type": "normal",
+#         "desc": "",
+#         "acl": "open",
+#         "uid": "6104402102131"
+#         }
+# res = p.addProduct("127.0.0.1", data)
+# print(res.text)
 
-    # for i in range(2000):
-    #     re = p.addProduct("127.0.0.1", u.getRandomStr(45), u.getRandomStr(45))
-    #     print(re.text)
+# for i in range(2000):
+#     re = p.addProduct("127.0.0.1", u.getRandomStr(45), u.getRandomStr(45))
+#     print(re.text)
 
-    # for i in range(20000):
-    #     re = p.deleteProduct("127.0.0.1", i)
-    #     print("第  %s  次执行删除" % i)
+# for i in range(20000):
+#     re = p.deleteProduct("127.0.0.1", i)
+#     print("第  %s  次执行删除" % i)
