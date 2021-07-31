@@ -1,5 +1,6 @@
-from Http import Http
-from login.Login import Login
+from src.Api.zentao.login.Login import Login
+from src.Common.Http import Http
+from src.Common.util import util
 
 
 class Product:
@@ -29,9 +30,9 @@ class Product:
         return respons
 
 # if __name__ == "__main__":
-#     p = Product()
-#     u = util()
-#     productIdList = []
+    # p = Product()
+    # u = util()
+    # productIdList = []
 #     res = p.getAllProduct("127.0.0.1")
 #     soup = BeautifulSoup(res.content, "html.parser")
 #     productTagList = soup.find_all("input", type='checkbox')
@@ -39,22 +40,23 @@ class Product:
 #     for tag in productTagList:
 #         productIdList.append(tag.get("value"))
 #     print(productIdList)
-# data = {"name": "productName_" + util().getRandomStr(5),
-#         "code": "productCode_" + util().getRandomStr(5),
-#         "line": 0,
-#         "PO": "admin",
-#         "QD": "",
-#         "RD": "",
-#         "type": "normal",
-#         "desc": "",
-#         "acl": "open",
-#         "uid": "6104402102131"
-#         }
+
 # res = p.addProduct("127.0.0.1", data)
 # print(res.text)
 
 # for i in range(2000):
-#     re = p.addProduct("127.0.0.1", u.getRandomStr(45), u.getRandomStr(45))
+#     data = {"name": "productName_" + util().getRandomStr(5),
+#             "code": "productCode_" + util().getRandomStr(5),
+#             "line": 0,
+#             "PO": "admin",
+#             "QD": "",
+#             "RD": "",
+#             "type": "normal",
+#             "desc": "",
+#             "acl": "open",
+#             "uid": "6104402102131"
+#             }
+#     re = p.addProduct("127.0.0.1",data)
 #     print(re.text)
 
 # for i in range(20000):

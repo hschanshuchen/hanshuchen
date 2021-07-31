@@ -1,6 +1,6 @@
 import pymysql
 
-from src.Common.Log import MyLog
+
 from src.Common.util import util
 
 

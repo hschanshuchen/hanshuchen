@@ -2,9 +2,9 @@ import hashlib
 import re
 import requests
 
-from Config import Config
-from Http import Http
+
 from src.Common.MD5 import MD5
+from src.Common.Config import Config
 from src.Common.util import util
 
 

@@ -1,9 +1,9 @@
 import requests
 import urllib3
 
-from Config import Config
+from src.Common.Config import Config
 from src.Common.Log import Logger
-from util import util
+
 
 
 class Http():
