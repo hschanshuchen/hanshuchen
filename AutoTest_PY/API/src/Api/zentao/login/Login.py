@@ -2,6 +2,7 @@ import hashlib
 import re
 import requests
 
+from Config import Config
 from Http import Http
 from src.Common.MD5 import MD5
 from src.Common.util import util
@@ -12,8 +13,8 @@ class Login:
     def __init__(self):
         self.sid = ""
         self.login_url = "http://127.0.0.1/zentao/user-login.html"
-        self.username = util().get_user("username")
-        self.password = util().get_user("password")
+        self.username = Config().get_user("username")
+        self.password = Config().get_user("password")
         self.md5 = MD5()
         self.headers = {"Content-Type": "application/x-www-form-urlencoded",
                         "Authorization": "Basic emVudGFvOm4zcGEwSmpsak0x",
