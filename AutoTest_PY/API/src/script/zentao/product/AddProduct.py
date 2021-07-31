@@ -1,10 +1,10 @@
 import re
 import unittest
 
-from Config import Config
-from product.Product import Product
+from src.Api.zentao.product.Product import Product
+from src.Common.Config import Config
 from src.Common.Log import Logger
-from util import util
+from src.Common.util import util
 
 
 class AddProduct(unittest.TestCase):
