@@ -1,16 +1,17 @@
 import requests
 import urllib3
+
+from Config import Config
 from src.Common.Log import Logger
 from util import util
 
 
 class Http():
     urllib3.disable_warnings()
-    util = util()
 
     def __init__(self):
         global basicPath, hostIp, timeout
-        timeout = self.util.get_http("timeout")
+        timeout = Config().get_http("timeout")
         self.logger = Logger().get_log().logger
 
     # get请求方法
