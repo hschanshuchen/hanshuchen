@@ -8,13 +8,16 @@ from util import util
 
 
 class GatAllProduct(unittest.TestCase):
+
     def setUp(self):
         self.logger = Logger().get_log().logger
         self.logger.info("开始执行用例 %s " % self.id())
         self.conf = Config()
         self.hostIp = self.conf.get_http("localhost")
         self.username = self.conf.get_user("username")
+
         self.product = Product()
+
         self.productIdList = []
 
     def test_getAllProduct_001(self):
@@ -30,12 +33,15 @@ class GatAllProduct(unittest.TestCase):
                      "acl": "open",
                      "uid": "6104402102131"
                      }
+        print(11111)
         response = self.product.addProduct(self.hostIp, self.data)
+        print(22222)
         self.assertEqual(200, response.status_code, "验证码是200")
         msg = re.findall(r"alert\('(.+?)'\)", response.text)[0]
         self.assertEqual("保存成功", msg, "返回提示信息保存成功")
 
         response = self.product.getAllProduct(self.hostIp)
+        self.assertEqual(200, response.status_code, "验证码是200")
         soup = BeautifulSoup(response.content, "html.parser")
         productTagList = soup.find_all("input", type='checkbox')
         for tag in productTagList:
