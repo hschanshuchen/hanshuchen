@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 from src.Api.zentao.product.Product import Product
 from src.Common.Config import Config
 from src.Common.Log import Logger
-from src.Common.util import util
+from src.Common.Util import Util
 
 
 class GatAllProduct(unittest.TestCase):
@@ -20,8 +20,8 @@ class GatAllProduct(unittest.TestCase):
 
     def test_getAllProduct_001(self):
         self.logger.info("用例步骤执行 %s" % self.id())
-        self.data = {"name": "productName_" + util().getRandomStr(5),
-                     "code": "productCode_" + util().getRandomStr(5),
+        self.data = {"name": "productName_" + Util().getRandomStr(5),
+                     "code": "productCode_" + Util().getRandomStr(5),
                      "line": 0,
                      "PO": self.username,
                      "QD": "",

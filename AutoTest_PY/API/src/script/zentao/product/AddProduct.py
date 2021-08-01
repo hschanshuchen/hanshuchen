@@ -4,7 +4,7 @@ import unittest
 from src.Api.zentao.product.Product import Product
 from src.Common.Config import Config
 from src.Common.Log import Logger
-from src.Common.util import util
+from src.Common.Util import Util
 
 
 class AddProduct(unittest.TestCase):
@@ -19,8 +19,8 @@ class AddProduct(unittest.TestCase):
 
     def test_addProduct_001(self):
         self.logger.info("用例步骤执行 %s" % self.id())
-        self.data = {"name": "productName_" + util().getRandomStr(5),
-                     "code": "productCode_" + util().getRandomStr(5),
+        self.data = {"name": "productName_" + Util().getRandomStr(5),
+                     "code": "productCode_" + Util().getRandomStr(5),
                      "line": 0,
                      "PO": self.username,
                      "QD": "",
@@ -38,9 +38,9 @@ class AddProduct(unittest.TestCase):
 
     def test_addProduct_002(self):
         self.logger.info("执行用例步骤 %s " % self.id())
-        productName = "productName_" + util().getRandomStr(5)
+        productName = "productName_" + Util().getRandomStr(5)
         self.data = {"name": productName,
-                     "code": "productCode_" + util().getRandomStr(5),
+                     "code": "productCode_" + Util().getRandomStr(5),
                      "line": 0,
                      "PO": self.username,
                      "QD": "",
@@ -59,8 +59,8 @@ class AddProduct(unittest.TestCase):
 
     def test_addProduct_003(self):
         self.logger.info("执行用例步骤 %s " % self.id())
-        self.data = {"name": util().getRandomStr(62) + util().getRandomStr(29),
-                     "code": "productCode_" + util().getRandomStr(5),
+        self.data = {"name": Util().getRandomStr(62) + Util().getRandomStr(29),
+                     "code": "productCode_" + Util().getRandomStr(5),
                      "line": 0,
                      "PO": self.username,
                      "QD": "",
