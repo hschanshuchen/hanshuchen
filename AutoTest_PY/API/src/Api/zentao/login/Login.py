@@ -5,7 +5,7 @@ import requests
 
 from src.Common.MD5 import MD5
 from src.Common.Config import Config
-from src.Common.util import util
+from src.Common.Util import Util
 
 
 class Login:
