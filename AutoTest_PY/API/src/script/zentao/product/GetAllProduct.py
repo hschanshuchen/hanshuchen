@@ -11,7 +11,7 @@ class GatAllProduct(unittest.TestCase):
 
     def setUp(self):
         self.logger = Logger().get_log().logger
-        self.logger.info("开始执行用例 %s " % self.caseid())
+        self.logger.info("开始执行用例 %s " % self.id())
         self.conf = Config()
         self.hostIp = self.conf.get_http("localhost")
         self.username = self.conf.get_user("username")
