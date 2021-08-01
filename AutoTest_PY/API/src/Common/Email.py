@@ -1,100 +1,51 @@
-import glob
+# coding:utf-8
 import os
 import smtplib
-import threading
-from datetime import datetime
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-
-from Log import Log
-from src.Common.util import util
+from src.Common.Config import Config
+from src.Common.Log import Log, Logger
 
 
 class Email:
-    util = util()
 
     def __init__(self):
-        global host, username, password, port, sender, title, content
-        host = util.get_email("mail_host")
-        username = util.get_email("mail_username")
-        password = util.get_email("mail_password")
-        port = util.get_email("mail_port")
-        sender = util.get_email("sender")
-        title = util.get_email("subject")
-        content = util.get_email("content")
-        self.value = util.get_email("receiver")
-        self.receiver = []
-        for n in str(self.value).split("/"):
-            self.receiver.append(n)
-        date = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
-        self.subject = title + " " + date
-        self.log = Log.get_log()
-        self.logger = self.log.logger
-        self.msg = MIMEMultipart("mixed")
+        self.logger = Logger().get_log().logger
+        self.config = Config()
+        self.smtpserver = self.config.get_email("HOST_SERVER")  # 发送邮件的服务器
+        self.port = self.config.get_email("port")  # 端口
+        self.authorizatioCcode = self.config.get_email("authorizatioCcode")  # QQ授权码，这里填写上自己的授权码
 
-    def config_header(self):
-        self.msg["subject"] = self.subject
-        self.msg["from"] = sender
-        self.msg["to"] = ";".join(self.receiver)
+    # 写信流程
+    def send_qq_email(self, sender, receiver, subject, fileName):
+        msg = MIMEMultipart()
+        msg['from'] = sender
+        msg['to'] = receiver
+        msg['subject'] = subject  # 邮件的主题
 
-    def config_content(self):
-        content_plain = MIMEText(content, "plain", "utf-8")
-        self.msg.attach(content_plain)
+        # 通过os获取文件路径
+        annex_path = os.path.realpath("../result/report/%s" % fileName)  # 附件内容的路径
+        annex = open(annex_path, "r", encoding="utf-8").read()
+        main_path = os.path.realpath("../Run/TextTestReport.text")  # 正文内容的路径
+        main_body = open(main_path, "r", encoding="utf-8").read()
 
-    def config_file(self):
-        if self.check_file():
-            reportpath = self.log.get_result_path()
-            zippath = os.path.join(os.path.realpath("./../result"), "result", "test.zip")
-            files = glob.glob(reportpath + "\*")
-            f = zippath.ZipFile(zippath, 'w', zippath.Zip_DEFLATED)
-            for file in files:
-                f.write(file)
-            f.close()
-            reportfile = open(zippath, 'rb').read()
-            filehtml = MIMEText(reportpath, "base64", 'utf-8')
-            filehtml['Content-Type'] = 'application/octet-stream'
-            filehtml['Content-Disposition'] = 'attachment; filename="test.zip"'
-            self.msg.attach(filehtml)
-            print(self.msg)
+        # 添加正文到容器
+        body = MIMEText(main_body, "plain", "utf-8")
+        msg.attach(body)
 
-    def check_file(self):
-        reportpath = self.log.get_report_path()
-        if os.path.isfile(reportpath) and not os.stat(reportpath) == 0:
-            return True
-        else:
-            return False
+        # 添加附件到容器
+        att = MIMEText(annex, "base64", "utf-8")
+        att["Content-Type"] = "application/octet-sream"
+        att["Content-Disposition"] = 'attachment;filename=%s' % fileName
+        msg.attach(att)
 
-    def send_email(self):
-        self.config_header()
-        self.config_content()
-        self.config_file()
-        try:
-            smtp = smtplib.SMTP()
-            smtp.connect(host)
-            smtp.login(username, password)
-            smtp.sendmail(sender, self.receiver, self.msg.as_string())
-            smtp.quit()
-            self.logger.info("The test report has send to developer by email.")
-        except Exception as ex:
-            self.logger.error(str(ex))
-
-
-class MyEmail:
-    email = None
-    mutex = threading.Lock()
-
-    def __init__(self):
-        pass
-
-    @staticmethod
-    def get_email():
-        if MyEmail.email is None:
-            MyEmail.mutex.acquire()
-            MyEmail.email = Email()
-            MyEmail.mutex.release()
-        return MyEmail.email
+        # 连接发送邮件
+        smtp = smtplib.SMTP_SSL(self.smtpserver, self.port)
+        smtp.login(sender, self.authorizatioCcode)
+        smtp.sendmail(sender, receiver, msg.as_string())
+        smtp.quit()
 
 
 if __name__ == "__main__":
-    e = Email()
-    e.config_file()
+    qq = Email()
+    qq.send_qq_email("2427697226@qq.com", "2427697226@qq.com", "这是一个测试报告", "2021_08_01-20-59-35report.html")
