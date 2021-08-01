@@ -38,7 +38,7 @@ class GatAllProduct(unittest.TestCase):
 
     def tearDown(self):
         self.logger.info("环境清理 %s " % self.id())
-        for page in range(200):
+        for page in range(10):
             response = self.product.getAllProduct(self.hostIp)
             self.assertEqual(200, response.status_code, "验证码是200")
             soup = BeautifulSoup(response.content, "html.parser")
