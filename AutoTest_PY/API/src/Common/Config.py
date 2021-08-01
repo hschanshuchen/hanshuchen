@@ -4,7 +4,8 @@ import os
 
 class Config:
     def __init__(self):
-        self.configPath = os.path.abspath("../../.././config.ini")
+        self.configPath = os.path.abspath("../config.ini")
+        print(self.configPath)
         self.conf = configparser.ConfigParser()
         self.conf.read(self.configPath, encoding='utf-8')
 
