@@ -48,7 +48,7 @@ class Email:
 
 if __name__ == "__main__":
       qq = Email()
-      qq.send_qq_email("2427697226@qq.com", "2427697226@qq.com", "这是一个测试报告", "*.html")
+      qq.send_qq_email("2427697226@qq.com", "2427697226@qq.com", "这是一个测试报告", "2021_08_01-23-26-54report.html")
 
     # root_path = os.path.abspath(os.path.dirname(__file__)).split('src')[0]+'src\config'
     # print(root_path)

@@ -8,12 +8,10 @@ class HTML:
     def __init__(self):
         # 定义需要执行哪个包下的文件，我要运行项目的文件夹是：当前目录下的父级目录下的“testcases”目录
         self.dir_test = os.path.abspath(os.path.dirname(__file__)).split('src')[0]+'src\\script'
-        print(self.dir_test)
         # 获取当前时间
         self.now = strftime("%Y_%m_%d-%H-%M-%S", localtime(time()))
         # 报告位置
         self.filename = os.path.abspath(os.path.dirname(__file__)).split('src')[0]+'src\\result\\report\\' + self.now + "report.html"
-        print(self.filename)
 
     def htmlTest(self, title, description):
         # 使用unittest.TestLoader().discover方法，运行以case.py结尾的所有py文件

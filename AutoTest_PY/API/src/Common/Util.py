@@ -6,7 +6,7 @@ from xml.etree import ElementTree as ElementTree
 from xlrd import open_workbook
 
 
-class util:
+class Util:
 
     def __init__(self):
         self.testCaseExcelPath = os.path.abspath("../TestData/file/login.xls")
@@ -60,7 +60,7 @@ class util:
 
 
 if __name__ == "__main__":
-    u = util()
+    u = Util()
 
 
     ss = u.get_sql("new111", "table000", "select_num")

@@ -1,6 +1,7 @@
 import hashlib
-class MD5:
 
+
+class MD5:
 
     def encrypt_md5(self, str):
         hash = hashlib.md5()

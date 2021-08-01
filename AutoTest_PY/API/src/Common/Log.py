@@ -7,7 +7,7 @@ from datetime import datetime
 class Log:
     def __init__(self):
         global logPath, resultPath
-        resultPath = os.path.realpath("./../result/log")
+        resultPath = os.path.abspath(os.path.dirname(__file__)).split('src')[0]+'src\\result\\log'
         print(resultPath)
         if not os.path.exists(resultPath):
             os.makedirs(resultPath)
