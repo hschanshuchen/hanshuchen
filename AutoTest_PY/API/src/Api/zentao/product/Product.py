@@ -1,6 +1,6 @@
 from src.Api.zentao.login.Login import Login
 from src.Common.Http import Http
-from src.Common.util import util
+from src.Common.Util import Util
 
 
 class Product:
